@@ -14,9 +14,9 @@ try {
 $sql = "SELECT pseudo, message, DATE_FORMAT(date_message, '%d/%m/%Y à %Hh %imin %ss') as date_msg FROM minichat ORDER BY date_message DESC";
 $query = $db->query($sql);
 if(!$query){
-    die('Erreur de chargement de la table minichat. Verifiez si la table a bien ete importee dans la base de donnees "'.$db_name.'".');
+    die('Erreur : Les messages ne peuvent être récupérés.');
 }
-var_dump($query);
+//var_dump($query);
 
 ?>
 <!DOCTYPE html>
@@ -37,6 +37,13 @@ var_dump($query);
         </form>
 
         <h2>Messages</h2>
-        <p>Récupérer les messages avec php</p>	
+        <?php 
+            /* On récupère les messages un à un et on les affiche */
+            while($row = $query->fetch()){
+        ?>
+        <p class="message">Le <?php echo $row['date_msg']; ?> <strong><?php echo htmlspecialchars($row['pseudo']); ?></strong> : <?php echo htmlspecialchars($row['message']); ?></p>
+        <?php }  //fin while
+            $query->closeCursor();
+        ?>	
     </body>
 </html>
