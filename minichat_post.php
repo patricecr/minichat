@@ -8,6 +8,8 @@ $pseudo = ''; $message = '';
 /* Tester le pseudo : il doit exister et ne pas être vide */
 if(isset($_POST['pseudo']) && $_POST['pseudo'] != ''){
     $pseudo = $_POST['pseudo'];
+    //un pseudo existe --> mettre à jour le cookie
+    setcookie('pseudo', $pseudo, time() + 3*24*3600);
 }
 
 /* Tester le message : il doit exister et ne pas être vide */

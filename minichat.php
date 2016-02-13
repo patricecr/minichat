@@ -2,6 +2,17 @@
 /* Inclure les paramètres de connexion à la base de données MySQL. */
 require('config_connexion_mysql.php');
 
+/*
+    Tester si un cookie contenant le pseudo existe :
+    - si oui : récupérer la valeur
+    - si non : initialiser la variable $pseudo et la laisser vide
+*/
+if(isset($_COOKIE['pseudo'])){
+    $pseudo = $_COOKIE['pseudo'];
+} else {
+    $pseudo = '';
+}
+
 /* Connexion à la base de données MySQL en utilisant les paramètres définis 
     dans le fichier de configuration config_connexion_mysql.php */
 try {
@@ -31,7 +42,7 @@ if(!$query){
         <form action="minichat_post.php" method="post">
             <fieldset>
                 <legend>Poster un message</legend>
-                <p><label for="pseudo">Pseudo :</label> <input type="text" name="pseudo" id="pseudo" maxlength="60" value="" /></p>
+                <p><label for="pseudo">Pseudo :</label> <input type="text" name="pseudo" id="pseudo" maxlength="60" value="<?php echo htmlspecialchars($pseudo); ?>" /></p>
                 <p><label for="message">Message :</label> <input type="text" name="message" id="message" size="75" maxlength="200" /></p>
                 <p><label></label> <input type="submit" value="Poster" /></p>
             </fieldset>
