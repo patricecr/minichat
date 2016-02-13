@@ -28,7 +28,7 @@ if(!$query){
     </head>
     <body>
         <h1>Minichat</h1>
-        <form action="" method="post">
+        <form action="minichat_post.php" method="post">
             <fieldset>
                 <legend>Poster un message</legend>
                 <p><label for="pseudo">Pseudo :</label> <input type="text" name="pseudo" id="pseudo" maxlength="60" value="" /></p>
