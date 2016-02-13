@@ -1,0 +1,19 @@
+body {
+    width: 900px;
+    margin: auto;
+    background-color: rgb(204, 211, 227);
+}
+
+h1 {
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+.message {
+    word-wrap:	break-word;
+}
